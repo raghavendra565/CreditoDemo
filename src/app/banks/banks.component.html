@@ -1,0 +1,432 @@
+<mat-toolbar>
+  <table width="100%">
+    <tr width="100%">
+      <td width="10%">
+        <img src="../../assets/logo/nav-logo.png" height="48px" width="180px" />
+      </td>
+      <td></td>
+      <td width="50%">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" class="form-control input-sm" placeholder="Search" />
+            <span class="input-group-btn">
+              <button class="btn btn-info btn-md" type="button">
+                <mat-icon>search</mat-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+      </td>
+      <td></td>
+      <td width="25%">
+        <div>
+          <form>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Location</div>
+                </div>
+                <mat-select class="form-control" id="inlineFormInputGroup" [(value)]="location" [ngClass]="location">
+                  <mat-option value="india"> <img src="../../assets/flags/india.png" class="flag" /> Hyderabad, INDIA
+                  </mat-option>
+                  <mat-option value="australia"> <img src="../../assets/flags/australia.png" class="flag" /> Sydney,
+                    AUSTRALIA </mat-option>
+                  <mat-option value="brazil"> <img src="../../assets/flags/brazil.png" class="flag" /> Rio de Janeiro,
+                    BRAZIL </mat-option>
+                  <mat-option value="russia"> <img src="../../assets/flags/russia.png" class="flag" /> Moscow, RUSSIA
+                  </mat-option>
+                  <mat-option value="sa"> <img src="../../assets/flags/south-africa.png" class="flag" /> Cape Town,
+                    SOUTH AFRICA </mat-option>
+                  <mat-option value="uk"> <img src="../../assets/flags/united-kingdom.png" class="flag" /> London, UK
+                  </mat-option>
+                  <mat-option value="usa"> <img src="../../assets/flags/united-states.png" class="flag" /> New York, USA
+                  </mat-option>
+                </mat-select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </td>
+    </tr>
+  </table>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <mat-list>
+      <mat-list-item>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon mat-list-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <h4 mat-line>Home</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <mat-icon mat-list-icon>note</mat-icon>
+        <h4 mat-line>Accounts</h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-conatiner">
+    <button mat-icon-button (click)="sidenavToggle()" *ngIf="!opened">
+      <mat-icon mat-list-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
+    </button>
+    <div style="width:96%; margin:2% 0 2% 2%;" align="center">
+      <div style="float: left; width:49%;">
+        <mat-card class="bank-card">
+          <!--style="height: 740px"-->
+          <mat-card-title>
+            <img src="../../assets/logo/icici-logo.png" width="150px" height="32px">
+          </mat-card-title>
+          <mat-card-content>
+            <!-- <div style="height:40px"></div> -->
+            <!-- <div width="100%" >
+                <div class="rolling">
+                  <img src="../../assets/img/coin.png" width="50px" height="50px">
+                </div>
+              </div> -->
+            <div style="height:120px">
+              <div class="image" *ngIf="cards">
+                <ul>
+                  <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png"
+                    [ngClass]="{'sample':flag1, 'sample_false': !flag1 }" width="250px" height="120px" #img1
+                    (click)="imageclick('img1')" />
+                  <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="250px" height="120px"
+                    [ngClass]="{'sample': flag2, 'sample_false': !flag2 }" #img2 (click)="imageclick('img2')" />
+                  <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="250px" height="120px"
+                    [ngClass]="{'sample': flag3, 'sample_false': !flag3 }" #img3 (click)="imageclick('img3')" />
+                </ul>
+              </div>
+              <mat-spinner id="spinner" *ngIf="spinner"></mat-spinner>
+            </div>
+            <!-- <div style="height:140px;">
+                <table width="100%">
+                  <tr>
+                    <td width="30%">
+                      <mat-card class="zoom">
+                        <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png" width="200px" height="126px"/> 
+                          <mat-card-content align="right" style="padding:10px">
+                            <mat-checkbox [(ngModel)]="checked" ></mat-checkbox>
+                          </mat-card-content>
+                      </mat-card>
+                    </td>
+                    <td width="30%">
+                      <mat-card style="margin: 0 !important; padding: 0 !important;width:250px">
+                        <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="200px" height="126px" style="margin: 10px"/>
+                        <mat-checkbox [(ngModel)]="checked"></mat-checkbox>
+                      </mat-card>
+                    </td>
+                    <td width="30%">
+                      <mat-card style="margin: 0 !important; padding: 0 !important;width:250px">
+                        <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="200px" height="126px" style="margin: 10px"/>
+                        <mat-checkbox [(ngModel)]="checked"></mat-checkbox>
+                      </mat-card>
+                    </td>
+                  </tr>
+                </table>
+              </div> -->
+            <div style="height:140px"></div>
+            <table width="100%">
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <div class="input-group mb-3" style="min-width:250px; max-width: 70%">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                      aria-describedby="basic-addon1" [(ngModel)]="amount">
+                    <button mat-raised-button
+                      style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                      (click)="transact()">Pay</button>
+                  </div>
+                  <div *ngIf="imageSelected == false">Please select a card</div>
+                  <div *ngIf="amountSelected == false">Please enter amount</div>
+                </td>
+                <td width="50%" rowspan="7" align="center">
+                  <mat-card class="mobile-card">
+                    <mat-card-title>
+                      <div width="100%" align="center" style="clear: both; vertical-align: middle">
+                        <!-- <div
+                                style="height: 10px; width:10px; background: white; border-radius: 50%; float: right;margin-right:50px">
+                              </div>
+                              <div
+                                style="height: 5px; width:10px; background: white; border-radius: 40px; float: right;margin-right:10px">
+                              </div> -->
+                        <div
+                          style="height: 10px;margin-top: -11px; width:100%; background: white; border-top-left-radius: 5px;border-top-right-radius: 5px;float: left;">
+                          <div
+                            style="height: 13px; width:84px; background: #2675B3 ; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; float: center;">
+                          </div>
+
+                          <div
+                            style="height: 45px; width:3px; background: #2675B3 ; border-top-right-radius: 2px;border-bottom-right-radius: 2px; margin:50px 0 0 133px">
+                          </div>
+                          <div
+                            style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:-53px 0 0 -150px">
+                          </div>
+                          <div
+                            style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:10px 0 0 -150px">
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </mat-card-title>
+
+                    <mat-card-content>
+                      <div id="mobile-screen">
+                          <div align="center" *ngIf="payment_transaction" style="padding-top: 20px">
+                              <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
+                              <p>Tranaction successful for amount ${{trans_locations[0]['amount']}}</p>
+                            </div>
+                      </div>
+                      <!-- <div style="height: 18px; width:18px; background: white; border-radius: 50%; float: center;">
+                            </div> -->
+                    </mat-card-content>
+                    <mat-card-footer>
+                      <div style="height: 3px; width:60px; background: #2675B3 ;border-radius: 1.5px;   margin:-22px 0px 0px 0px;
+                              ">
+                      </div>
+                    </mat-card-footer>
+                  </mat-card>
+                  <!-- <mat-card class="mobile-card">
+                      <mat-card-title>
+                        <div width="100%" align="center" style="clear: both; vertical-align: middle">
+                          <div style="height: 5px; width:40px; background: white; border-radius: 40px; float: center;">
+                          </div>
+                        </div>
+                      </mat-card-title>
+                      <mat-card-content>
+                        <div id="mobile-screen">
+                          <div align="center" *ngIf="payment_transaction">
+                            <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
+                            <p>Tranaction successful for amount ${{trans_locations[0]['amount']}}</p>
+                          </div>
+                        </div>
+                        <div style="height: 18px; width:18px; background: white; border-radius: 50%; float: center;">
+                        </div>
+                      </mat-card-content>
+                    </mat-card> -->
+                </td>
+                <!-- <td rowspan="3" width="50%"></td> -->
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #b36326 !important">Deploy Model
+                    One</button>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #76b326 !important">Deploy Model
+                    Two</button>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #6326b3 !important">Deploy Model
+                    Three</button>
+                </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div style="float: right; width:49%;">
+        <mat-card class="bank-card">
+          <mat-card-title>
+            <img src="../../assets/logo/hsbc-logo.png" width="100px" height="17px">
+          </mat-card-title>
+          <mat-card-content>
+            <!-- <div style="height:40px"></div> -->
+            <div style="height:120px">
+              <div class="image">
+                <ul>
+                  <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png"
+                    [ngClass]="{'sample':flag1, 'sample_false': !flag1 }" width="250px" height="120px" #img1
+                    (click)="imageclick('img1')" />
+                  <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="250px" height="120px"
+                    [ngClass]="{'sample': flag2, 'sample_false': !flag2 }" #img2 (click)="imageclick('img2')" />
+                  <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="250px" height="120px"
+                    [ngClass]="{'sample': flag3, 'sample_false': !flag3 }" #img3 (click)="imageclick('img3')" />
+                </ul>
+              </div>
+            </div>
+            <div style="height:140px"></div>
+            <table width="100%" height="100%">
+              <tr width="100%">
+                <td width="50%" rowspan="7" align="center">
+                    <mat-card class="mobile-card">
+                        <mat-card-title>
+                          <div width="100%" align="center" style="clear: both; vertical-align: middle">
+                            <!-- <div
+                                    style="height: 10px; width:10px; background: white; border-radius: 50%; float: right;margin-right:50px">
+                                  </div>
+                                  <div
+                                    style="height: 5px; width:10px; background: white; border-radius: 40px; float: right;margin-right:10px">
+                                  </div> -->
+                            <div
+                              style="height: 10px;margin-top: -11px; width:100%; background: white; border-top-left-radius: 5px;border-top-right-radius: 5px;float: left;">
+                              <div
+                                style="height: 13px; width:84px; background: #2675B3 ; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; float: center;">
+                              </div>
+    
+                              <div
+                                style="height: 45px; width:3px; background: #2675B3 ; border-top-right-radius: 2px;border-bottom-right-radius: 2px; margin:50px 0 0 133px">
+                              </div>
+                              <div
+                                style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:-53px 0 0 -150px">
+                              </div>
+                              <div
+                                style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:10px 0 0 -150px">
+                              </div>
+    
+                            </div>
+    
+                          </div>
+                        </mat-card-title>
+    
+                        <mat-card-content>
+                          <div id="mobile-screen">
+                              <div align="center" *ngIf="payment_transaction" style="padding-top: 20px">
+                                  <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
+                                  <p>Tranaction successful for amount ${{trans_locations[0]['amount']}}</p>
+                                </div>
+                          </div>
+                          <!-- <div style="height: 18px; width:18px; background: white; border-radius: 50%; float: center;">
+                                </div> -->
+                        </mat-card-content>
+                        <mat-card-footer>
+                          <div style="height: 3px; width:60px; background: #2675B3 ;border-radius: 1.5px;   margin:-22px 0px 0px 0px;
+                                  ">
+                          </div>
+                        </mat-card-footer>
+                      </mat-card>
+                </td>
+                <td width="50%" align="center">
+                  <div class="input-group mb-3" style="min-width:250px; max-width: 70%">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                      aria-describedby="basic-addon1">
+                    <button mat-raised-button
+                      style="background: #2675B3; color: white; margin-left: 15px; border-radius: 30px;">Pay</button>
+                  </div>
+
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #b36326 !important">Deploy Model
+                    One</button>
+                </td>
+              </tr>
+              <tr height="30px">
+
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #76b326 !important">Deploy Model
+                    Two</button>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #6326b3 !important">Deploy Model
+                    Three</button>
+                </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+<!-- <select class="form-control" id="inlineFormInputGroup">
+                  <option >INDIA</option>
+                  <option>LONDON</option>
+                  <option>AUSTRALIA</option>
+                  <option>USA</option>
+                  <option>SYDNEY</option>
+                </select> -->
+<!-- <div style="height: 10px; width:10px; background: white; border-radius: 50%; float: right;margin-right:50px"></div>
+  <div style="height: 5px; width:10px; background: white; border-radius: 40px; float: right;margin-right:10px">
+  </div> -->
+<!-- <mat-card-footer>
+  <div width="100%" align="center" style="clear: both; vertical-align: middle">
+    <div style="height: 10px; width:10px; background: white; border-radius: 50%; float: right;margin-right:50px"></div>
+    <div style="height: 5px; width:10px; background: white; border-radius: 40px; float: right;margin-right:10px"></div>
+    <div style="height: 20px; width:60px; background: white; border-radius: 40px; float: center;">
+    </div>
+  </div>
+</mat-card-footer> -->
+<!-- <div style="width:96%; margin:2%" align="center">
+  <div style="float: left; width:49%;">
+    <mat-card style="height: 740px">
+      <div class="top-div">
+        <table width="100%">
+          <tr width="100%">
+            <td width="50%" align="center">ICICI Bank</td>
+            <td width="50%" align="right">
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Location">
+                  <mat-option *ngFor="let loc of locations" [value]="loc">
+                    {{loc}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <div style="float: center; width: 100px;"></div>
+        <div style="float: right; width: 200px">
+          
+        </div>
+      </div>
+      <mat-card-content>
+        <div class="grid-container">
+          <div class="item1">Header</div>
+          <div class="item2">Menu</div>
+          <div class="item3">Main</div>  
+          <div class="item4">Right</div>
+          <div class="item5">Footer</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <div style="float: right; width:49%;">
+    <mat-card style="height: 740px">
+      <mat-card-title class="top-div-hsbc">HSBC Bank</mat-card-title>
+    </mat-card>
+  </div>
+</div> -->
+<!-- <mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+</mat-grid-list> -->

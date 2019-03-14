@@ -1,0 +1,251 @@
+<mat-toolbar>
+  <table width="100%">
+    <tr>
+      <td width="20%">
+        <img src="../../assets/logo/nav-logo.png" height="48px" width="180px" />
+      </td>
+      <td width="50%">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" class="form-control input-sm" placeholder="Search" />
+            <span class="input-group-btn">
+              <button class="btn btn-info btn-md" type="button">
+                <mat-icon>search</mat-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+      </td>
+      <td width="10%"></td>
+      <td width="15%">
+        <div>
+          <form>
+            <div class="col-auto">
+              <label class="sr-only" for="inlineFormInputGroup">Username</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Location</div>
+                </div>
+                <select class="form-control" id="inlineFormInputGroup">
+                  <option>INDIA</option>
+                  <option>LONDON</option>
+                  <option>AUSTRALIA</option>
+                  <option>USA</option>
+                  <option>SYDNEY</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </td>
+    </tr>
+  </table>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <mat-list>
+      <!-- <h3 mat-subheader>Folders</h3> -->
+      <mat-list-item>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <h4 mat-line>Home</h4>
+        <!-- <p mat-line> {{folder.updated | date}} </p> -->
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <!-- <h3 mat-subheader>Notes</h3> -->
+      <mat-list-item>
+        <mat-icon mat-list-icon>note</mat-icon>
+        <h4 mat-line>Accounts</h4>
+        <!-- <p mat-line> {{note.updated | date}} </p> -->
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content class="main-conatiner">
+    <div style="width:96%; margin:2%" align="center">
+      <div style="float: left; width:49%;">
+        <mat-card style="height: 740px">
+          <mat-card-title>
+            <img src="../../assets/logo/icici-logo.png" width="150px" height="32px">
+          </mat-card-title>
+          <mat-card-content>
+            <div style="height:40px"></div>
+            <div style="height:120px">
+              <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png" width="250px" height="120px" />
+              <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="250px" height="120px" />
+              <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="250px" height="120px" />
+            </div>
+            <div style="height:50px"></div>
+            <table width="88%" style="margin: 0px 50px 0px 0px">
+              <tr width="100%">
+                <td width="20%">
+                  <div class="input-group mb-3" style="width:200px">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                      aria-describedby="basic-addon1">
+                  </div>
+                </td>
+                <td valign="top" align="left">
+                  <button mat-raised-button style="background: #2675B3; color: white;">Pay</button>
+                </td>
+                <td width="70%">
+                </td>
+              </tr>
+            </table>
+            <table width="100%">
+              <tr height="30px">
+              </tr>
+              <tr width="100%">
+                <td width="50%">
+                  <button mat-raised-button id="custom-button">Deploy Model One</button>
+                </td>
+                <td width="50%" rowspan="7" colspan="2">
+                  <mat-card style="margin: 20px 70px 20px 70px;height: 300px; border-radius: 20px;">
+                  </mat-card>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%">
+                  <button mat-raised-button id="custom-button">Deploy Model Two</button>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%">
+                  <button mat-raised-button id="custom-button">Deploy Model Three</button>
+                </td>
+              </tr>
+              <tr height="50px">
+                <td></td>
+              </tr>
+              <tr height="50px">
+                <td></td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div style="float: right; width:49%;">
+        <mat-card style="height: 740px">
+          <mat-card-title>
+            <img src="../../assets/logo/hsbc-logo-.png" width="100px" height="17px">
+          </mat-card-title>
+          <mat-card-content>
+            <div style="height:40px"></div>
+            <div style="height:120px">
+              <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png" width="250px" height="120px"/>
+              <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="250px" height="120px"/>
+              <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="250px" height="120px"/>
+            </div>
+            <div style="height:50px"></div>
+            <table width="86%" style="margin: 0px 0px 0px 60px">
+              <tr width="100%">
+                <td width="70%"></td>
+                <td width="20%">
+                  <div class="input-group mb-3" style="width:200px;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">$</span>
+                    </div>
+                    <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                      aria-describedby="basic-addon1">
+                  </div>
+                </td>
+                <td valign="top" align="center">
+                  <button mat-raised-button style="background: #2675B3; color: white;">Pay</button>
+                </td>
+              </tr>
+            </table>
+            <table width="100%" height="100%">
+              <tr height="30px">
+              </tr>
+              <tr width="100%">
+                <td width="50%" rowspan="7">
+                  <mat-card style="margin: 20px 70px 20px 70px;height: 300px; border-radius: 20px;">
+                  </mat-card>
+                </td>
+                <td width="50%" align="right">
+                  <button mat-raised-button id="custom-button">Deploy Model
+                    One</button>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="right">
+                  <button mat-raised-button id="custom-button">Deploy Model
+                    Two</button>
+                </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="right">
+                  <button mat-raised-button id="custom-button">Deploy Model
+                    Three</button>
+                </td>
+              </tr>
+              <tr height="50px">
+                <td></td>
+              </tr>
+              <tr height="50px">
+                <td></td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+<!-- <div style="width:96%; margin:2%" align="center">
+  <div style="float: left; width:49%;">
+    <mat-card style="height: 740px">
+      <div class="top-div">
+        <table width="100%">
+          <tr width="100%">
+            <td width="50%" align="center">ICICI Bank</td>
+            <td width="50%" align="right">
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Select Location">
+                  <mat-option *ngFor="let loc of locations" [value]="loc">
+                    {{loc}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <div style="float: center; width: 100px;"></div>
+        <div style="float: right; width: 200px">
+          
+        </div>
+      </div>
+      <mat-card-content>
+        <div class="grid-container">
+          <div class="item1">Header</div>
+          <div class="item2">Menu</div>
+          <div class="item3">Main</div>  
+          <div class="item4">Right</div>
+          <div class="item5">Footer</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <div style="float: right; width:49%;">
+    <mat-card style="height: 740px">
+      <mat-card-title class="top-div-hsbc">HSBC Bank</mat-card-title>
+    </mat-card>
+  </div>
+</div> -->
+<!-- <mat-grid-list cols="2" rowHeight="1:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+</mat-grid-list> -->
