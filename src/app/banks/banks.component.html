@@ -74,33 +74,62 @@
     <button mat-icon-button (click)="sidenavToggle()" *ngIf="!opened">
       <mat-icon mat-list-icon aria-label="Example icon-button with a heart icon">menu</mat-icon>
     </button>
-    <div style="width:96%; margin:2% 0 2% 2%;" align="center">
+    <div style="width:96%; margin:3% 0 2% 2%;" align="center">
+
+
+      <!-- ICICI Bank started-->
+
       <div style="float: left; width:49%;">
-        <mat-card class="bank-card">
-          <!--style="height: 740px"-->
-          <mat-card-title>
+        <mat-card class="bank-card" (click)="getheight($event)">
+
+          <!-- Header Started-->
+          <mat-card-header style="margin-left: 20px">
             <img src="../../assets/logo/icici-logo.png" width="150px" height="32px">
-          </mat-card-title>
+            <div style="border: 2px solid #2675B3; width:500px; height:70px; margin-left: 20px; border-radius: 20px">
+              <img src="../../assets/img/head.png" height="60px"
+                style="margin-top: -60px; margin-left:20px; border-radius: 5px" align="left">
+              <img src="../../assets/img/common_network.png" width="70px" align="left">
+
+              <img src="../../assets/img/network.png" width="70px" align="left" *ngIf="!displayanimation2[1]">
+              <img src="../../assets/img/network2.png" width="60px" align="left" *ngIf="!displayanimation2[3]">
+              <img src="../../assets/img/network3.jpeg" width="60px" align="left" *ngIf="!displayanimation2[5]">
+
+              <img src="../../assets/img/network.png" width="70px" align="left" *ngIf="!displayanimation1[0]">
+              <img src="../../assets/img/network.png" [ngClass]="{'box1': !deploy1[1], 'end-state1':deploy1[1]}"
+                align="left" *ngIf="displayanimation1[1]">
+
+              <img src="../../assets/img/network2.png" width="60px" align="left" *ngIf="!displayanimation1[2]">
+              <img src="../../assets/img/network2.png" [ngClass]="{'box1': !deploy1[3], 'end-state1':deploy1[3]}"
+                align="left" *ngIf="displayanimation1[3]">
+
+              <img src="../../assets/img/network3.jpeg" width="60px" align="left" *ngIf="!displayanimation1[4]">
+              <img src="../../assets/img/network3.jpeg" [ngClass]="{'box1': !deploy1[5], 'end-state1':deploy1[5]}"
+                align="left" *ngIf="displayanimation1[5]">
+            </div>
+          </mat-card-header>
+
+          <!-- Header ended-->
+
+           <!-- Content Started-->
           <mat-card-content>
-            <!-- <div style="height:40px"></div> -->
-            <!-- <div width="100%" >
-                <div class="rolling">
-                  <img src="../../assets/img/coin.png" width="50px" height="50px">
-                </div>
-              </div> -->
             <div style="height:120px">
-              <div class="image" *ngIf="cards">
+              <div class="image" *ngIf="!spinner[0]">
                 <ul>
                   <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png"
-                    [ngClass]="{'sample':flag1, 'sample_false': !flag1 }" width="250px" height="120px" #img1
-                    (click)="imageclick('img1')" />
+                    [ngClass]="{'sample':flag1[0], 'sample_false': !flag1[0] }" width="250px" height="120px" #img1
+                    (click)="imageclick('img1', 0)" />
                   <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="250px" height="120px"
-                    [ngClass]="{'sample': flag2, 'sample_false': !flag2 }" #img2 (click)="imageclick('img2')" />
+                    [ngClass]="{'sample': flag2[0], 'sample_false': !flag2[0] }" #img2
+                    (click)="imageclick('img2', 0)" />
                   <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="250px" height="120px"
-                    [ngClass]="{'sample': flag3, 'sample_false': !flag3 }" #img3 (click)="imageclick('img3')" />
+                    [ngClass]="{'sample': flag3[0], 'sample_false': !flag3[0] }" #img3
+                    (click)="imageclick('img3', 0)" />
                 </ul>
               </div>
-              <mat-spinner id="spinner" *ngIf="spinner"></mat-spinner>
+              <div style="padding-top: 70px;" *ngIf="spinner[0]" align="center">
+                Processing payment
+                <mat-spinner id="spinner" [diameter]="diameter"></mat-spinner>
+              </div>
             </div>
             <!-- <div style="height:140px;">
                 <table width="100%">
@@ -128,39 +157,78 @@
                   </tr>
                 </table>
               </div> -->
-            <div style="height:140px"></div>
+            <div style="height:50px"></div>
+            <table width="100%">
+              <tr>
+                <td width="50%" align="center">
+                  <mat-card style="height:150px; width: 96%">
+                    <mat-card-content>
+                      <p>Pay Online</p>
+                      <div class="input-group mb-3" style="min-width:250px; max-width: 90%">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                          aria-describedby="basic-addon1" [(ngModel)]="amount[0]">
+                        <button mat-raised-button
+                          style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                          (click)="onlinePay(0)">Pay</button>
+                      </div>
+                      <div *ngIf="imageSelected[0] == false">Please select a card</div>
+                      <div *ngIf="amountSelected[0] == false">Please enter amount</div>
+                    </mat-card-content>
+                  </mat-card>
+                </td>
+                <td width="50%" align="center">
+                  <mat-card style="height:150px; width: 96%">
+                    <mat-card-content>
+                      <p>Cash Withdrawal</p>
+                      <div class="input-group mb-3" style="min-width:250px; max-width: 90%"
+                        *ngIf="cashWithdrawalStatus[0]['money'] == null">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                          aria-describedby="basic-addon1" [(ngModel)]="cash[0]">
+                        <button mat-raised-button
+                          style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                          (click)="cashWithdrawal(0)">proceed</button>
+                      </div>
+                      <div class="input-group mb-3" style="min-width:250px; max-width: 90%"
+                        *ngIf="cashWithdrawalStatus[0]['money'] != null && cashWithdrawalStatus[0]['pin'] == null">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">PIN</span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Enter Pin" aria-label="amount"
+                          aria-describedby="basic-addon1" [(ngModel)]="enteredpin">
+                        <button mat-raised-button
+                          style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                          (click)="cashWithdrawal(0)">Withdraw</button>
+                      </div>
+                      <div *ngIf="this.cashWithdrawalStatus[0]['moneyEntered'] == false"> Plese enter amount</div>
+                      <div *ngIf="this.cashWithdrawalStatus[0]['cardSelected'] == false">Please insert a card</div>
+                      <div *ngIf="this.cashWithdrawalStatus[0]['validatePin'] == false" style="color: red">Incorrect pin
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </td>
+              </tr>
+            </table>
             <table width="100%">
               <tr width="100%">
-                <td width="50%" align="center">
-                  <div class="input-group mb-3" style="min-width:250px; max-width: 70%">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">$</span>
-                    </div>
-                    <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
-                      aria-describedby="basic-addon1" [(ngModel)]="amount">
-                    <button mat-raised-button
-                      style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
-                      (click)="transact()">Pay</button>
-                  </div>
-                  <div *ngIf="imageSelected == false">Please select a card</div>
-                  <div *ngIf="amountSelected == false">Please enter amount</div>
-                </td>
-                <td width="50%" rowspan="7" align="center">
+                <td></td>
+                
+                <td width="50%" rowspan="8" align="center">
+
+                  <!-- IOS mobiel started-->
                   <mat-card class="mobile-card">
                     <mat-card-title>
                       <div width="100%" align="center" style="clear: both; vertical-align: middle">
-                        <!-- <div
-                                style="height: 10px; width:10px; background: white; border-radius: 50%; float: right;margin-right:50px">
-                              </div>
-                              <div
-                                style="height: 5px; width:10px; background: white; border-radius: 40px; float: right;margin-right:10px">
-                              </div> -->
                         <div
                           style="height: 10px;margin-top: -11px; width:100%; background: white; border-top-left-radius: 5px;border-top-right-radius: 5px;float: left;">
                           <div
                             style="height: 13px; width:84px; background: #2675B3 ; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; float: center;">
                           </div>
-
                           <div
                             style="height: 45px; width:3px; background: #2675B3 ; border-top-right-radius: 2px;border-bottom-right-radius: 2px; margin:50px 0 0 133px">
                           </div>
@@ -170,28 +238,26 @@
                           <div
                             style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:10px 0 0 -150px">
                           </div>
-
                         </div>
-
                       </div>
                     </mat-card-title>
-
                     <mat-card-content>
                       <div id="mobile-screen">
-                          <div align="center" *ngIf="payment_transaction" style="padding-top: 20px">
-                              <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
-                              <p>Tranaction successful for amount ${{trans_locations[0]['amount']}}</p>
-                            </div>
+                        <div align="center" *ngIf="payment_transaction[0]" style="padding-top: 20px">
+                          <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
+                          <p *ngIf="amount[0] != null">Transaction successful for amount ${{amount[0]}}</p>
+                          <p *ngIf="cash[0] != null">Withdrawal successful for amount ${{cash[0]}}</p>
+                        </div>
                       </div>
-                      <!-- <div style="height: 18px; width:18px; background: white; border-radius: 50%; float: center;">
-                            </div> -->
                     </mat-card-content>
                     <mat-card-footer>
-                      <div style="height: 3px; width:60px; background: #2675B3 ;border-radius: 1.5px;   margin:-22px 0px 0px 0px;
-                              ">
+                      <div
+                        style="height: 3px; width:60px; background: #2675B3 ;border-radius: 1.5px;   margin:-22px 0px 0px 0px;">
                       </div>
                     </mat-card-footer>
                   </mat-card>
+                  <!-- IOS mobiel ended-->
+
                   <!-- <mat-card class="mobile-card">
                       <mat-card-title>
                         <div width="100%" align="center" style="clear: both; vertical-align: middle">
@@ -216,107 +282,218 @@
               <tr height="30px">
                 <td></td>
               </tr>
-              <tr width="100%">
-                <td width="50%" align="center">
-                  <button mat-raised-button id="custom-button" style="background: #b36326 !important">Deploy Model
-                    One</button>
-                </td>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr height="30px">
+                <td></td>
               </tr>
               <tr height="30px">
                 <td></td>
               </tr>
               <tr width="100%">
                 <td width="50%" align="center">
-                  <button mat-raised-button id="custom-button" style="background: #76b326 !important">Deploy Model
-                    Two</button>
+                  <button mat-raised-button id="custom-button" style="background: #b36326 !important"
+                    (click)="deploymodel1(0)">
+                    <img [ngClass]="{'box': !deploy1[0], 'end-state': deploy1[0]}" *ngIf="displayanimation1[0]"
+                      src="../../assets/img/network.png">
+                    Deploy Model One
+                  </button>
                 </td>
-              </tr>
-              <tr height="30px">
-                <td></td>
               </tr>
               <tr width="100%">
                 <td width="50%" align="center">
-                  <button mat-raised-button id="custom-button" style="background: #6326b3 !important">Deploy Model
-                    Three</button>
+                  <button mat-raised-button id="custom-button" style="background: #76b326 !important"
+                    (click)="deploymodel1(2)">Deploy Model
+                    Two
+                    <img [ngClass]="{'box': !deploy1[2], 'end-state': deploy1[2]}" *ngIf="displayanimation1[2]"
+                      src="../../assets/img/network2.png">
+                  </button>
+                </td>
+              </tr>
+              <tr width="100%">
+                <td width="50%" align="center">
+                  <button mat-raised-button id="custom-button" style="background: #6326b3 !important"
+                    (click)="deploymodel1(4)">Deploy Model
+                    Three
+                    <img [ngClass]="{'box': !deploy1[4], 'end-state': deploy1[4]}" *ngIf="displayanimation1[4]"
+                      src="../../assets/img/network3.jpeg">
+                  </button>
                 </td>
               </tr>
             </table>
           </mat-card-content>
+
+          <!-- Content ended-->
         </mat-card>
       </div>
+      <!-- ICICI Bank ended-->
+      
+
+      <!-- HSBC bank Started -->
+
       <div style="float: right; width:49%;">
         <mat-card class="bank-card">
-          <mat-card-title>
-            <img src="../../assets/logo/hsbc-logo.png" width="100px" height="17px">
-          </mat-card-title>
+
+          <!-- Header started-->
+          <mat-card-header>
+            <div style="border: 2px solid #2675B3; width:500px; height:70px; margin-left: 20px; border-radius: 20px">
+              <img src="../../assets/img/head.png" height="60px"
+                style="margin-top: -60px; margin-left:20px; border-radius: 5px" align="left">
+              <img src="../../assets/img/common_network.png" width="70px" align="left">
+
+              <img src="../../assets/img/network.png" width="70px" align="left" *ngIf="!displayanimation1[1]">
+              <img src="../../assets/img/network2.png" width="60px" align="left" *ngIf="!displayanimation1[3]">
+              <img src="../../assets/img/network3.jpeg" width="60px" align="left" *ngIf="!displayanimation1[5]">
+
+              <img src="../../assets/img/network.png" width="70px" align="left" *ngIf="!displayanimation2[0]">
+              <img src="../../assets/img/network.png" [ngClass]="{'box2': !deploy2[1], 'end-state2':deploy2[1]}" align="left" *ngIf="displayanimation2[1]">
+
+              <img src="../../assets/img/network2.png" width="60px" align="left" *ngIf="!displayanimation2[2]">
+              <img src="../../assets/img/network2.png" [ngClass]="{'box2': !deploy2[3], 'end-state2':deploy2[3]}" align="left" *ngIf="displayanimation2[3]">
+
+              <img src="../../assets/img/network3.jpeg" width="60px" align="left" *ngIf="!displayanimation2[4]">
+              <img src="../../assets/img/network3.jpeg" [ngClass]="{'box2': !deploy2[5], 'end-state2':deploy2[5]}" align="left" *ngIf="displayanimation2[5]">
+            </div>
+            <img src="../../assets/logo/hsbc-logo.png" width="100px" height="17px"
+              style="margin-top: 15px;margin-left:20px">
+          </mat-card-header>
+
+          <!-- Header ended-->
+
+          <!-- Conent Started-->
           <mat-card-content>
-            <!-- <div style="height:40px"></div> -->
+
             <div style="height:120px">
-              <div class="image">
+              <div class="image" *ngIf="!spinner[1]">
                 <ul>
                   <img src="../../assets/cards/ICICJ_BANK_MASTER CARD.png"
-                    [ngClass]="{'sample':flag1, 'sample_false': !flag1 }" width="250px" height="120px" #img1
-                    (click)="imageclick('img1')" />
+                    [ngClass]="{'sample':flag1[1], 'sample_false': !flag1[1] }" width="250px" height="120px" #img1
+                    (click)="imageclick('img1', 1)" />
                   <img src="../../assets/cards/ICICJ_BANK_VISA.png" width="250px" height="120px"
-                    [ngClass]="{'sample': flag2, 'sample_false': !flag2 }" #img2 (click)="imageclick('img2')" />
+                    [ngClass]="{'sample': flag2[1], 'sample_false': !flag2[1] }" #img2
+                    (click)="imageclick('img2', 1)" />
                   <img src="../../assets/cards/ICICJ_PREMIUM CARD.png" width="250px" height="120px"
-                    [ngClass]="{'sample': flag3, 'sample_false': !flag3 }" #img3 (click)="imageclick('img3')" />
+                    [ngClass]="{'sample': flag3[1], 'sample_false': !flag3[1] }" #img3
+                    (click)="imageclick('img3', 1)" />
                 </ul>
               </div>
+              <div style="padding-top: 70px;" *ngIf="spinner[1]" align="center">
+                Processing payment
+                <mat-spinner id="spinner" [diameter]="diameter"></mat-spinner>
+              </div>
             </div>
-            <div style="height:140px"></div>
-            <table width="100%" height="100%">
-              <tr width="100%">
-                <td width="50%" rowspan="7" align="center">
-                    <mat-card class="mobile-card">
-                        <mat-card-title>
-                          <div width="100%" align="center" style="clear: both; vertical-align: middle">
-                            <!-- <div
-                                    style="height: 10px; width:10px; background: white; border-radius: 50%; float: right;margin-right:50px">
-                                  </div>
-                                  <div
-                                    style="height: 5px; width:10px; background: white; border-radius: 40px; float: right;margin-right:10px">
-                                  </div> -->
-                            <div
-                              style="height: 10px;margin-top: -11px; width:100%; background: white; border-top-left-radius: 5px;border-top-right-radius: 5px;float: left;">
-                              <div
-                                style="height: 13px; width:84px; background: #2675B3 ; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; float: center;">
-                              </div>
-    
-                              <div
-                                style="height: 45px; width:3px; background: #2675B3 ; border-top-right-radius: 2px;border-bottom-right-radius: 2px; margin:50px 0 0 133px">
-                              </div>
-                              <div
-                                style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:-53px 0 0 -150px">
-                              </div>
-                              <div
-                                style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:10px 0 0 -150px">
-                              </div>
-    
-                            </div>
-    
-                          </div>
-                        </mat-card-title>
-    
-                        <mat-card-content>
-                          <div id="mobile-screen">
-                              <div align="center" *ngIf="payment_transaction" style="padding-top: 20px">
-                                  <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
-                                  <p>Tranaction successful for amount ${{trans_locations[0]['amount']}}</p>
-                                </div>
-                          </div>
-                          <!-- <div style="height: 18px; width:18px; background: white; border-radius: 50%; float: center;">
-                                </div> -->
-                        </mat-card-content>
-                        <mat-card-footer>
-                          <div style="height: 3px; width:60px; background: #2675B3 ;border-radius: 1.5px;   margin:-22px 0px 0px 0px;
-                                  ">
-                          </div>
-                        </mat-card-footer>
-                      </mat-card>
+            <div style="height:50px"></div>
+
+            <!-- payent table Started-->
+
+
+            <table width="100%">
+              <tr>
+                <td width="50%" align="center">
+
+                  <!-- IOS mobiel started-->
+
+                  <mat-card style="height:150px; width: 96%">
+                    <mat-card-content>
+                      <p>Cash Withdrawal</p>
+                      <div class="input-group mb-3" style="min-width:250px; max-width: 90%"
+                        *ngIf="cashWithdrawalStatus[1]['money'] == null">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                          aria-describedby="basic-addon1" [(ngModel)]="cash[1]">
+                        <button mat-raised-button
+                          style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                          (click)="cashWithdrawal(1)">proceed</button>
+                      </div>
+                      <div class="input-group mb-3" style="min-width:250px; max-width: 90%"
+                        *ngIf="cashWithdrawalStatus[1]['money'] != null && cashWithdrawalStatus[1]['pin'] == null">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">PIN</span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Enter Pin" aria-label="amount"
+                          aria-describedby="basic-addon1" [(ngModel)]="enteredpin">
+                        <button mat-raised-button
+                          style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                          (click)="cashWithdrawal(1)">Withdraw</button>
+                      </div>
+                      <div *ngIf="this.cashWithdrawalStatus[1]['moneyEntered'] == false"> Plese enter amount</div>
+                      <div *ngIf="this.cashWithdrawalStatus[1]['cardSelected'] == false">Please insert a card</div>
+                      <div *ngIf="this.cashWithdrawalStatus[1]['validatePin'] == false" style="color: red">Incorrect pin
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                  <!-- IOS mobiel ended-->
                 </td>
                 <td width="50%" align="center">
-                  <div class="input-group mb-3" style="min-width:250px; max-width: 70%">
+                  <mat-card style="height:150px; width: 96%">
+                    <mat-card-content>
+                      <p>Pay Online</p>
+                      <div class="input-group mb-3" style="min-width:250px; max-width: 90%">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="Enter amount" aria-label="amount"
+                          aria-describedby="basic-addon1" [(ngModel)]="amount[1]">
+                        <button mat-raised-button
+                          style="background: #2675B3; color: white; margin-left:15px; border-radius: 30px"
+                          (click)="onlinePay(1)">Pay</button>
+                      </div>
+                      <div *ngIf="imageSelected[1] == false">Please select a card</div>
+                      <div *ngIf="amountSelected[1] == false">Please enter amount</div>
+                    </mat-card-content>
+                  </mat-card>
+                </td>
+              </tr>
+            </table>
+
+            <!-- payent table ended-->
+
+
+            <!-- Model table Started-->
+
+
+            <table width="100%" height="100%">
+              <tr width="100%">
+                <td width="50%" rowspan="8" align="center">
+                  <mat-card class="mobile-card">
+                    <mat-card-title>
+                      <div width="100%" align="center" style="clear: both; vertical-align: middle">
+                        <div
+                          style="height: 10px;margin-top: -11px; width:100%; background: white; border-top-left-radius: 5px;border-top-right-radius: 5px;float: left;">
+                          <div
+                            style="height: 13px; width:84px; background: #2675B3 ; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; float: center;">
+                          </div>
+                          <div
+                            style="height: 45px; width:3px; background: #2675B3 ; border-top-right-radius: 2px;border-bottom-right-radius: 2px; margin:50px 0 0 133px">
+                          </div>
+                          <div
+                            style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:-53px 0 0 -150px">
+                          </div>
+                          <div
+                            style="height: 30px; width:3px; background: #2675B3 ; border-top-left-radius: 2px;border-bottom-left-radius: 2px; margin:10px 0 0 -150px">
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card-title>
+                    <mat-card-content>
+                      <div id="mobile-screen">
+                        <div align="center" *ngIf="payment_transaction[1]" style="padding-top: 20px">
+                          <img src="../../assets/logo/icici-logo.png" width="50px" height="10.40px">
+                          <p *ngIf="amount[1] != null">Transaction successful for amount ${{amount[1]}}</p>
+                          <p *ngIf="cash[1] != null">Withdrawal successful for amount ${{cash[1]}}</p>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                    <mat-card-footer>
+                      <div style="height: 3px; width:60px; background: #2675B3 ;border-radius: 1.5px;   margin:-22px 0px 0px 0px;"></div>
+                    </mat-card-footer>
+                  </mat-card>
+                </td>
+                <td width="50%" align="center">
+                  <!-- <div class="input-group mb-3" style="min-width:250px; max-width: 70%">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1">$</span>
                     </div>
@@ -324,42 +501,58 @@
                       aria-describedby="basic-addon1">
                     <button mat-raised-button
                       style="background: #2675B3; color: white; margin-left: 15px; border-radius: 30px;">Pay</button>
-                  </div>
-
+                  </div> -->
                 </td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr height="30px">
+                <td></td>
+              </tr>
+              <tr height="30px">
+                <td></td>
               </tr>
               <tr height="30px">
                 <td></td>
               </tr>
               <tr width="100%">
                 <td width="50%" align="center">
-                  <button mat-raised-button id="custom-button" style="background: #b36326 !important">Deploy Model
-                    One</button>
+                  <button mat-raised-button id="custom-button" style="background: #b36326 !important" (click)="deploymodel3(0)">Deploy Model
+                    One <img [ngClass]="{'box': !deploy2[0], 'end-state': deploy2[0]}" *ngIf="displayanimation2[0]"
+                    src="../../assets/img/network.png">
+                  </button>
                 </td>
-              </tr>
-              <tr height="30px">
-
-                <td></td>
               </tr>
               <tr width="100%">
                 <td width="50%" align="center">
-                  <button mat-raised-button id="custom-button" style="background: #76b326 !important">Deploy Model
-                    Two</button>
+                  <button mat-raised-button id="custom-button" style="background: #76b326 !important" (click)="deploymodel3(2)">Deploy Model
+                    Two<img [ngClass]="{'box': !deploy2[2], 'end-state': deploy2[2]}" *ngIf="displayanimation2[2]"
+                    src="../../assets/img/network.png">
+                  </button>
                 </td>
-              </tr>
-              <tr height="30px">
-                <td></td>
               </tr>
               <tr width="100%">
                 <td width="50%" align="center">
-                  <button mat-raised-button id="custom-button" style="background: #6326b3 !important">Deploy Model
-                    Three</button>
+                  <button mat-raised-button id="custom-button" style="background: #6326b3 !important" (click)="deploymodel3(4)">Deploy Model
+                    Three<img [ngClass]="{'box': !deploy2[4], 'end-state': deploy2[4]}" *ngIf="displayanimation2[4]"
+                    src="../../assets/img/network.png">
+                  </button>
                 </td>
               </tr>
             </table>
+
+
+            <!-- Model table Ended-->
+
+
           </mat-card-content>
+
+          <!-- Conent Started-->
+
         </mat-card>
       </div>
+      <!-- HSBC bank Ended -->
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

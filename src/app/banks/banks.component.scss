@@ -10,25 +10,99 @@
   right: 0;
   // border: 1px solid #555;
 }
-mat-sidenav{
+
+mat-sidenav {
   background: #2675B3;
   min-width: 200px;
   max-width: 200px;
 }
+
 mat-list-item {
   color: white !important;
 }
 
-.main-conatiner{
+.main-conatiner {
   // min-width: 1720px;
   width:90%;
+}
+
+.box {
+  position: absolute;
+  display: inline;
+  z-index: 2;
+  height: 10px;
+  width: 10px;
+  // background-color: #1ce;
+  transform: translateY(0) scale(0);
+  transition: transform 5s linear;
+  transition-timing-function: linear;
+}
+
+.end-state {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: 40px;
+  width: 40px;
+  // background-color: #1ce;
+  transition: transform 5s linear;
+  transition-timing-function: linear;
+  transform: translateY(-530px) scale(1);
+}
+
+.box1 {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: 0px;
+  width: 0px;
+  // background-color: #1ce;
+  transform: translateX(0) scale(0);
+  transition: transform 5s linear;
+  transition-timing-function: linear;
+}
+
+.end-state1 {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: 70px;
+  width: 70px;
+  // background-color: #1ce;
+  transition: transform 10s linear;
+  transition-timing-function: linear;
+  transform: translateX(1200px) scale(1);
+}
+
+.box2 {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: 0px;
+  width: 0px;
+  // background-color: #1ce;
+  transform: translateX(0) scale(0);
+  transition: transform 5s linear;
+  transition-timing-function: linear;
+}
+
+.end-state2 {
+  position: absolute;
+  display: block;
+  z-index: 2;
+  height: 70px;
+  width: 70px;
+  // background-color: #1ce;
+  transition: transform 10s linear;
+  transition-timing-function: linear;
+  transform: translateX(-800px) scale(1);
 }
 
 .bank-card {
   height: 740px;
 }
 
-mat-toolbar{
+mat-toolbar {
   min-height: 70px;
   background: white;
   // border: 1px solid red;
@@ -64,9 +138,7 @@ mat-toolbar{
 //   background: white
 // }
 
-
 .mobile-card {
-  
   background: #2675B3 !important;
   margin: 2% 0 2% 0;
   min-width:150px;
@@ -83,9 +155,9 @@ mat-toolbar{
   background: white
 }
 
-table, th, td {
-  border: 1px solid black;
-}
+// table, th, td {
+//   border: 1px solid black;
+// }
 
 .flag {
   width:25px;
@@ -127,12 +199,9 @@ table, th, td {
   padding-left: 50px;
 }
 
-
-
 .hsbc-td-align{
   align-content: right;
 }
-
 
 #custom-search-input{
   padding: 3px;
@@ -185,7 +254,6 @@ table, th, td {
   -ms-transition: all 1s ease; /* Opera */
   transition: all 1s  ease;// cubic-bezier(0.165, 0.84, 0.44, 1);
   // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .image:hover img {
